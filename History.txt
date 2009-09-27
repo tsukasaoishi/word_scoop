@@ -7,3 +7,7 @@
 
 * 1 minor enhancement:
   * move to GitHub from Rubyforge
+
+== 1.0.2 2009-09-27
+* 1 minor enhancement:
+  * bug fix.

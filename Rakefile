@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/lib/kaerukeyword'
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.new('kaerukeyword', Kaerukeyword::VERSION) do |p|
-  p.developer('FIXME full name', 'FIXME email')
+  p.developer('Tsukasa OISHI', 'tsukasa.oishi@gmail.com')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.rubyforge_name       = p.name # TODO this is default value
   p.extra_dev_deps = [
