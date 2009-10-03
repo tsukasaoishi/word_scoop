@@ -3,6 +3,6 @@ $:.unshift(File.dirname(__FILE__)) unless
 
 require 'kaerukeyword.so'
 class Kaerukeyword
-  VERSION = '1.1'
+  VERSION = '1.1.1'
 end
 
