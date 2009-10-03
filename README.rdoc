@@ -21,11 +21,6 @@ searchメソッドで文中からキーワードを探し出します。
 
 keywords.search("I Love Ruby") #=> ["Ruby"]
 
-
-== REQUIREMENTS:
-
-Hpricot
-
 == INSTALL:
 
 sudo gem install tsukasaoishi-kaerukeyword
