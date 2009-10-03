@@ -4,4 +4,5 @@ README.rdoc
 Rakefile
 lib/kaerukeyword.rb
 ext/extconf.rb
+ext/kaerukeyword.h
 ext/kaerukeyword.c
