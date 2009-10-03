@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = ["tsukasa.oishi@gmail.com"]
   s.extensions = ["ext/extconf.rb"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.rdoc"]
-  s.files = ["History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/kaerukeyword.rb", "ext/extconf.rb", "ext/kaerukeyword.h", "ext/kaerukeyword.c"]
+  s.files = ["History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/kaerukeyword.rb", "ext/extconf.rb", "ext/kaerukeyword.c", "ext/kaerukeyword.h"]
   s.has_rdoc = false
   s.homepage = %q{http://www.kaeruspoon.net/}
   s.rdoc_options = ["--main", "README.rdoc"]
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 2
+
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<newgem>, [">= 1.2.3"])
       s.add_development_dependency(%q<hoe>, [">= 1.8.0"])
