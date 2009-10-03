@@ -11,3 +11,7 @@
 == 1.0.2 2009-09-27
 * 1 minor enhancement:
   * bug fix.
+
+== 1.1 2009-10-03
+* 1 major enhancement:
+  * all renewal by C

@@ -2,18 +2,20 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kaerukeyword}
-  s.version = "1.0.2"
+  s.version = "1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tsukasa OISHI"]
   s.date = %q{2009-03-07}
   s.description = %q{KaeruKeyword は登録されたキーワードが文中に存在 するかどうかを調べることができます。   インスタンスの作成時にキーワードを登録できます。  keywords = KaeruKeyword.new(["Ruby", "Rails"])   あとからキーワードを追加することもできます。  keywords << "Tsukasa"   searchメソッドで文中からキーワードを探し出します。 キーワードが見つかったときは、そのキーワードを 含めた配列を返します。  keywords.search("I Love Ruby") #=> ["Ruby"]}
   s.email = ["tsukasa.oishi@gmail.com"]
+  s.extensions = ["ext/extconf.rb"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.rdoc"]
-  s.files = ["History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/kaerukeyword.rb"]
+  s.files = ["History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/kaerukeyword.rb", "ext/extconf.rb", "ext/kaerukeyword.c"]
   s.has_rdoc = true
+  s.homepage = %q{http://www.kaeruspoon.net/}
   s.rdoc_options = ["--main", "README.rdoc"]
-  s.require_paths = ["lib"]
+  s.require_paths = ["lib", "ext"]
   s.rubyforge_project = %q{kaerukeyword}
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{KaeruKeyword は登録されたキーワードが文中に存在 するかどうかを調べることができます。   インスタンスの作成時にキーワードを登録できます。  keywords = KaeruKeyword.new(["Ruby", "Rails"])   あとからキーワードを追加することもできます。  keywords << "Tsukasa"   searchメソッドで文中からキーワードを探し出します。 キーワードが見つかったときは、そのキーワードを 含めた配列を返します。  keywords.search("I Love Ruby") #=> ["Ruby"]}
