@@ -23,7 +23,7 @@ node initialize_node(char moji)
     node work = (node)malloc(sizeof(struct _node));
     if (!work) {
         // 例外処理
-        exit(-1);
+        rb_raise(rb_eStandardError, "メモリが足りません");
     }
 
     work->moji = moji;
