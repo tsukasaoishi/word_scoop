@@ -1,2 +1,2 @@
 require "mkmf"
-create_makefile("kaerukeyword")
+create_makefile("word_scoop")

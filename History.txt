@@ -15,3 +15,8 @@
 == 1.1 2009-10-03
 * 1 major enhancement:
   * all renewal by C
+ 
+== 2.0 2009-11-21
+* 1 major enhancement:
+  * The library name is changed from Kaerukeyword to WordScoop.
+  * filter_html method : word enclosed with 'a' tag.

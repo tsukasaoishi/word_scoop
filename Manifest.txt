@@ -2,7 +2,7 @@ History.txt
 Manifest.txt
 README.rdoc
 Rakefile
-lib/kaerukeyword.rb
+lib/word_scoop.rb
 ext/extconf.rb
-ext/kaerukeyword.h
-ext/kaerukeyword.c
+ext/word_scoop.h
+ext/word_scoop.c
