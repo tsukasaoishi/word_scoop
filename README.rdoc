@@ -6,22 +6,24 @@ WordScoop is a library that searching keyword in text.
 = How to
 
 == Register keywords
-keywords = WordScoop.new(["Ruby", "Rails"])
+ keywords = WordScoop.new(["Ruby", "Rails"])
 
 == Add keyword
 keywords << "Tsukasa"
 
 == Keyword in the text is picked up
-keywords.search("I Love Ruby") #=> ["Ruby"]
+ keywords.search("I Love Ruby") #=> ["Ruby"]
 
 == HTML text support
 
 === URL is registered
-keyword.link_url = %Q|<a href="http://ja.wikipedia.org/wiki/%s">%s</a>|
-(Default is %Q|http://www.kaeruspoon.net/keywords/%s>%s</a>|)
+
+ keyword.link_url = %Q|<a href="http://ja.wikipedia.org/wiki/%s">%s</a>|
+ (Default is %Q|http://www.kaeruspoon.net/keywords/%s>%s</a>|)
 
 === Keyword in the text is enclosed with HTML 'a' tag
-keywords.filter_html("I Love Ruby") #=> %Q|I Love <a href="http://ja.wikipedia.org/wiki/Ruby">Ruby</a>|
+
+ keywords.filter_html("I Love Ruby") #=> %Q|I Love <a href="http://ja.wikipedia.org/wiki/Ruby">Ruby</a>|
 
 
 == INSTALL:
