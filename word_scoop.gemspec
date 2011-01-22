@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{word_scoop}
-  s.version = "2.0.0"
+  s.version = "2.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tsukasa OISHI"]
-  s.date = %q{2009-11-21}
+  s.date = %q{2011-01-23}
   s.description = %q{WordScoop is a library that searching keyword in text.}
   s.email = ["tsukasa.oishi@gmail.com"]
   s.extensions = ["ext/extconf.rb"]

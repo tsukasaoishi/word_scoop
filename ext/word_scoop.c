@@ -121,7 +121,7 @@ static VALUE t_add(VALUE self, VALUE str)
     char *keyword;
     int i, len;
 
-    keyword = STR2CSTR(str);
+    keyword = StringValuePtr(str);
 
     len = strlen(keyword);
     while(keyword[len - 1] == CR || keyword[len - 1] == LF ||
@@ -156,7 +156,7 @@ static VALUE t_search(VALUE self, VALUE str)
     VALUE array;
 
     array = rb_ary_new();
-    text = STR2CSTR(str);
+    text = StringValuePtr(str);
 
     Data_Get_Struct(self, struct _node, root);
 
@@ -207,7 +207,7 @@ static VALUE t_filter_hrml(VALUE self, VALUE str)
     VALUE change_str, url_base, word;
 
     change_str = rb_str_new2(EMPTY_STRING);
-    text = STR2CSTR(str);
+    text = StringValuePtr(str);
 
     Data_Get_Struct(self, struct _node, root);
     url_base = rb_iv_get(self, LINK_URL_VARIABLE);
