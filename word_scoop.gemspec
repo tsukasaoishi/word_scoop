@@ -1,38 +1,26 @@
-# -*- encoding: utf-8 -*-
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'word_scoop/version'
 
-Gem::Specification.new do |s|
-  s.name = %q{word_scoop}
-  s.version = "2.0.1"
+Gem::Specification.new do |spec|
+  spec.name          = "word_scoop"
+  spec.version       = WordScoop::VERSION
+  spec.authors       = ["Tsukasa OISHI"]
+  spec.email         = ["tsukasa.oishi@gmail.com"]
+  spec.summary       = %q{WordScoop will pick up keywords that have been pre-registered from the text.}
+  spec.description   = %q{WordScoop will pick up keywords that have been pre-registered from the text.}
+  spec.homepage      = "https://github.com/tsukasaoishi/word_scoop"
+  spec.license       = "MIT"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Tsukasa OISHI"]
-  s.date = %q{2011-01-23}
-  s.description = %q{WordScoop is a library that searching keyword in text.}
-  s.email = ["tsukasa.oishi@gmail.com"]
-  s.extensions = ["ext/extconf.rb"]
-  s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.rdoc"]
-  s.files = ["History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/word_scoop.rb", "ext/extconf.rb", "ext/word_scoop.c", "ext/word_scoop.h"]
-  s.has_rdoc = false
-  s.homepage = %q{http://www.kaeruspoon.net/}
-  s.rdoc_options = ["--main", "README.rdoc"]
-  s.require_paths = ["lib", "ext"]
-  s.rubyforge_project = %q{word_scoop}
-  s.rubygems_version = %q{1.3.1}
-  s.summary = %q{WordScoop is a library that searching keyword in text.}
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib", "ext"]
+  spec.extensions    = ["ext/word_scoop/extconf.rb"]
 
-  if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 2
-
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<newgem>, [">= 1.2.3"])
-      s.add_development_dependency(%q<hoe>, [">= 1.8.0"])
-    else
-      s.add_dependency(%q<newgem>, [">= 1.2.3"])
-      s.add_dependency(%q<hoe>, [">= 1.8.0"])
-    end
-  else
-    s.add_dependency(%q<newgem>, [">= 1.2.3"])
-    s.add_dependency(%q<hoe>, [">= 1.8.0"])
-  end
+  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "rake", '~> 10.0'
+  spec.add_development_dependency "rspec", '~> 2.14'
+  spec.add_development_dependency "rake-compiler", '~> 0.9'
 end
