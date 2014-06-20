@@ -29,7 +29,7 @@ typedef char bool;
 
 #define EMPTY_STRING ""
 #define LINK_URL_VARIABLE "@link_url"
-#define DEAULT_LINK_URL "<a href=\"http://www.kaeruspoon.net/keywords/%s\">%s</a>"
+#define DEAULT_LINK_URL "<a href='http://ja.wikipedia.org/wiki/%s'>%s</a>"
 
 // node is 1 byte character
 typedef struct _node {
@@ -58,6 +58,7 @@ node search_child_or_create(node, char);
 void destroy_node(node);
 
 // add encoding info
+static VALUE add_encode(VALUE, rb_encoding *);
 
 //-----------------------------------------------------------
 // Ruby Methods
