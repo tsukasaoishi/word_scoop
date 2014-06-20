@@ -2,6 +2,7 @@
 
 WordScoop will pick up keywords that have been pre-registered from the text.
 WordScoop is very fast library. The average of registring 1 word time is 0.487 µs. The average of to search time is 1.248 ms.(Be performed on the Macbook air at 2012)
+Try ```bundle exec rake benchmark```
 
 
 ## Installation
