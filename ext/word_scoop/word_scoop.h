@@ -57,6 +57,8 @@ node search_child_or_create(node, char);
 // free memory all child and self
 void destroy_node(node);
 
+// add encoding info
+
 //-----------------------------------------------------------
 // Ruby Methods
 // ----------------------------------------------------------
