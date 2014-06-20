@@ -1,28 +1,21 @@
-%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
-require File.dirname(__FILE__) + '/lib/kaerukeyword'
+require "bundler/gem_tasks"
+require "rake/extensiontask"
+require "rspec/core/rake_task"
 
-# Generate all the Rake tasks
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new('word_scoop', WordScoop::VERSION) do |p|
-  p.developer('Tsukasa OISHI', 'tsukasa.oishi@gmail.com')
-  p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.rubyforge_name       = p.name # TODO this is default value
-  p.extra_dev_deps = [
-    ['newgem', ">= #{::Newgem::VERSION}"]
-  ]
-
-  pec_extras = {
-    :extensions => ['ext/extconf.rb'],
-  }
-
-  p.clean_globs |= %w[**/.DS_Store tmp *.log]
-  path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
-  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'rdoc')
-  p.rsync_args = '-av --delete --ignore-errors'
+# compile
+gemspec = eval(File.read(File.expand_path('../word_scoop.gemspec', __FILE__)))
+Rake::ExtensionTask.new("word_scoop", gemspec) do |ext|
+  ext.lib_dir = "lib/word_scoop"
 end
 
-require 'newgem/tasks' # load /tasks/*.rake
-Dir['tasks/**/*.rake'].each { |t| load t }
+# spec
+RSpec::Core::RakeTask.new(:spec)
+task :default => :spec
+Rake::Task[:spec].prerequisites << :compile
 
-# TODO - want other tests/tasks run by default? Add them to the list
-# task :default => [:spec, :features]
+# benchmark
+task :benchmark do
+  require File.expand_path("../benchmark/measure", __FILE__)
+  WordScoopBenchmark.new.run
+end
+Rake::Task[:benchmark].prerequisites << :compile

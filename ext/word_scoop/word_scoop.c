@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ruby.h>
+#include <ruby/encoding.h>
 #include "word_scoop.h"
 
 
@@ -86,6 +87,13 @@ void destroy_node(node n)
     free(n);
 }
 
+// add encoding info
+static VALUE add_encode(VALUE str, rb_encoding *enc)
+{
+  rb_enc_associate(str, enc);
+  return str;
+}
+
 //-----------------------------------------------------------
 // Ruby Methods
 // ----------------------------------------------------------
@@ -154,8 +162,10 @@ static VALUE t_search(VALUE self, VALUE str)
     char *text;
     int i, head_i, tail_i, total_len;
     VALUE array;
+    rb_encoding *enc;
 
     array = rb_ary_new();
+    enc = rb_enc_get(str);
     text = StringValuePtr(str);
 
     Data_Get_Struct(self, struct _node, root);
@@ -180,7 +190,12 @@ static VALUE t_search(VALUE self, VALUE str)
         } else {
             if (head_i != -1) {
                 if (tail_i != -1) {
-                    rb_funcall(array, rb_intern("push"), 1, rb_str_new(&text[head_i], (tail_i - head_i + 1)));
+                    rb_funcall(
+                        array,
+                        rb_intern("push"),
+                        1,
+                        add_encode(rb_str_new(&text[head_i], (tail_i - head_i + 1)), enc)
+                    );
                     i = tail_i;
                     tail_i = -1;
                 } else {
@@ -205,8 +220,10 @@ static VALUE t_filter_hrml(VALUE self, VALUE str)
     char *text, *inner_tag;
     int i, head_i, tail_i, copy_head_i, total_len;
     VALUE change_str, url_base, word;
+    rb_encoding *enc;
 
     change_str = rb_str_new2(EMPTY_STRING);
+    enc = rb_enc_get(str);
     text = StringValuePtr(str);
 
     Data_Get_Struct(self, struct _node, root);
@@ -271,11 +288,21 @@ static VALUE t_filter_hrml(VALUE self, VALUE str)
             if (head_i != -1) {
                 if (tail_i != -1) {
                     if (copy_head_i < head_i) {
-                        rb_funcall(change_str, rb_intern("concat"), 1, rb_str_new(&text[copy_head_i], (head_i - copy_head_i)));
+                        rb_funcall(
+                            change_str, 
+                            rb_intern("concat"),
+                            1,
+                            add_encode(rb_str_new(&text[copy_head_i], (head_i - copy_head_i)), enc)
+                        );
                     }
 
                     word = rb_str_new(&text[head_i], (tail_i - head_i + 1));
-                    rb_funcall(change_str, rb_intern("concat"), 1, rb_funcall(url_base, rb_intern("%"), 1, rb_assoc_new(word, word)));
+                    rb_funcall(
+                        change_str,
+                        rb_intern("concat"),
+                        1,
+                        add_encode(rb_funcall(url_base, rb_intern("%"), 1, rb_assoc_new(word, word)), enc)
+                    );
                     i = tail_i;
                     copy_head_i = tail_i + 1;
                     tail_i = -1;
@@ -291,7 +318,12 @@ static VALUE t_filter_hrml(VALUE self, VALUE str)
     if (copy_head_i == 0) {
         return str;
     } else {
-        rb_funcall(change_str, rb_intern("concat"), 1, rb_str_new(&text[copy_head_i], (total_len - copy_head_i)));
+        rb_funcall(
+            change_str,
+            rb_intern("concat"),
+            1,
+            add_encode(rb_str_new(&text[copy_head_i], (total_len - copy_head_i)), enc)
+        );
         return change_str;
     }
 }
