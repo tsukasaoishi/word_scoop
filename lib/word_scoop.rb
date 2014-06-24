@@ -1,7 +1,7 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
-require 'word_scoop/word_scoop.bundle'
+require 'word_scoop/word_scoop'
 
 class WordScoop
   attr_accessor :link_url
