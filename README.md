@@ -1,5 +1,7 @@
 # WordScoop
 
+[![Gem Version](https://badge.fury.io/rb/word_scoop.svg)](http://badge.fury.io/rb/word_scoop) [![Build Status](https://travis-ci.org/tsukasaoishi/word_scoop.svg?branch=master)](https://travis-ci.org/tsukasaoishi/word_scoop) [![Code Climate](https://codeclimate.com/github/tsukasaoishi/word_scoop/badges/gpa.svg)](https://codeclimate.com/github/tsukasaoishi/word_scoop)
+
 WordScoop will pick up keywords that have been pre-registered from the text.
 WordScoop is very fast library. The average of registring 1 word time is 0.487 µs. The average of to search time is 1.248 ms.(Be performed on the Macbook air at 2012)
 Try ```bundle exec rake benchmark```
