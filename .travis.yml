@@ -1,0 +1,12 @@
+language: ruby
+before_script:
+  - "bundle exec rake compile"
+rvm:
+  - ree
+  - 1.8.7
+  - 1.9.3
+  - 2.0.0
+  - 2.1.2
+notifications:
+  emails:
+    - tsukasa.oishi@gmail.com
