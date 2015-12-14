@@ -213,7 +213,7 @@ static VALUE t_search(VALUE self, VALUE str)
 /**
  * filter_html
  **/
-static VALUE t_filter_hrml(VALUE self, VALUE str)
+static VALUE t_filter_html(VALUE self, VALUE str)
 {
     node root, now, ret;
     bool in_tag;
@@ -338,6 +338,6 @@ void Init_word_scoop() {
     rb_define_singleton_method(cWordScoop, "new", t_new, -1);
     rb_define_method(cWordScoop, "add", t_add, 1);
     rb_define_method(cWordScoop, "search", t_search, 1);
-    rb_define_method(cWordScoop, "filter_html", t_filter_hrml, 1);
+    rb_define_method(cWordScoop, "filter_html", t_filter_html, 1);
     rb_define_alias(cWordScoop, "<<", "add");
 }
