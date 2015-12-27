@@ -2,9 +2,11 @@ language: ruby
 before_script:
   - "bundle exec rake compile"
 rvm:
-  - 1.9.3
   - 2.0.0
-  - 2.1.2
+  - 2.1
+  - 2.2
+  - 2.3
+  - ruby-head
 notifications:
   emails:
     - tsukasa.oishi@gmail.com
