@@ -14,9 +14,11 @@
 #include <ruby/encoding.h>
 #include "word_scoop.h"
 
+static VALUE t_add(VALUE, VALUE);
 
 // initialize node
-node initialize_node(char moji)
+static node
+initialize_node(char moji)
 {
     node work = (node)malloc(sizeof(struct _node));
     if (!work) {
@@ -33,7 +35,8 @@ node initialize_node(char moji)
 }
 
 // add child node
-void add_child(node parent, node child)
+static void
+add_child(node parent, node child)
 {
     if (parent->child_head) {
         child->next = parent->child_head;
@@ -42,10 +45,11 @@ void add_child(node parent, node child)
 }
 
 // search node by use character
-node search_child(node n, char moji)
+static node
+search_child(node n, char moji)
 {
     node child;
-    
+
     child = n->child_head;
     while(child) {
         if (child->moji == moji) {
@@ -59,10 +63,11 @@ node search_child(node n, char moji)
 
 // search node by use character.
 // if nothing, create new node
-node search_child_or_create(node n, char moji)
+static node
+search_child_or_create(node n, char moji)
 {
     node child;
-    
+
     child = search_child(n, moji);
     if(!child) {
         child = initialize_node(moji);
@@ -73,7 +78,8 @@ node search_child_or_create(node n, char moji)
 }
 
 // free memory all child and self
-void destroy_node(node n)
+static void
+destroy_node(node n)
 {
     node now, next;
 
@@ -88,7 +94,8 @@ void destroy_node(node n)
 }
 
 // add encoding info
-static VALUE add_encode(VALUE str, rb_encoding *enc)
+static VALUE
+add_encode(VALUE str, rb_encoding *enc)
 {
   rb_enc_associate(str, enc);
   return str;
@@ -101,7 +108,8 @@ static VALUE add_encode(VALUE str, rb_encoding *enc)
 /**
  * new
  **/
-static VALUE t_new(int argc, VALUE *argv, VALUE klass)
+static VALUE
+t_new(int argc, VALUE *argv, VALUE klass)
 {
     node root;
     VALUE obj, array, string;
@@ -123,7 +131,8 @@ static VALUE t_new(int argc, VALUE *argv, VALUE klass)
 /**
  * add
  **/
-static VALUE t_add(VALUE self, VALUE str)
+static VALUE
+t_add(VALUE self, VALUE str)
 {
     node root, now;
     char *keyword;
@@ -156,7 +165,8 @@ static VALUE t_add(VALUE self, VALUE str)
 /**
  * search
  **/
-static VALUE t_search(VALUE self, VALUE str)
+static VALUE
+t_search(VALUE self, VALUE str)
 {
     node root, now, ret;
     char *text;
@@ -214,7 +224,8 @@ static VALUE t_search(VALUE self, VALUE str)
 /**
  * filter_html
  **/
-static VALUE t_filter_html(VALUE self, VALUE str)
+static VALUE
+t_filter_html(VALUE self, VALUE str)
 {
     node root, now, ret;
     bool in_tag;
@@ -333,7 +344,8 @@ static VALUE t_filter_html(VALUE self, VALUE str)
 /**
  * define class
  **/
-void Init_word_scoop() {
+void
+Init_word_scoop() {
     VALUE cWordScoop;
 
     cWordScoop = rb_define_class("WordScoop", rb_cObject);
