@@ -75,7 +75,6 @@ node search_child_or_create(node n, char moji)
 // free memory all child and self
 void destroy_node(node n)
 {
-    int i;
     node now, next;
 
     now = n->child_head;
@@ -128,7 +127,7 @@ static VALUE t_add(VALUE self, VALUE str)
 {
     node root, now;
     char *keyword;
-    int i, len;
+    long i, len;
 
     keyword = StringValuePtr(str);
 
@@ -161,7 +160,8 @@ static VALUE t_search(VALUE self, VALUE str)
 {
     node root, now, ret;
     char *text;
-    int i, head_i, tail_i, total_len;
+    long i, total_len;
+    long head_i, tail_i;
     VALUE array;
     rb_encoding *enc;
 
@@ -218,8 +218,9 @@ static VALUE t_filter_html(VALUE self, VALUE str)
 {
     node root, now, ret;
     bool in_tag;
-    char *text, *inner_tag;
-    int i, head_i, tail_i, copy_head_i, total_len;
+    char *text;
+    const char* inner_tag;
+    long i, head_i, tail_i, copy_head_i, total_len;
     VALUE change_str, url_base, word;
     rb_encoding *enc;
 
