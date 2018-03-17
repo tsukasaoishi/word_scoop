@@ -7,11 +7,6 @@
 //************************************
 
 
-// bool type
-#define true    1
-#define false   0
-typedef char bool;
-
 #define CR '\r'
 #define LF '\n'
 #define TAB '\t'

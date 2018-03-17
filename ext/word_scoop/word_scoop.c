@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <ruby.h>
 #include <ruby/encoding.h>
 #include "word_scoop.h"
